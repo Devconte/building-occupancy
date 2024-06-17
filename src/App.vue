@@ -3,6 +3,7 @@ export default {
   name: "App",
   components: {
     StatCard: () => import("./components/StatCardComponent.vue"),
+    TableList: () => import("./components/TableListComponent.vue"),
   },
   data() {
     return {
@@ -14,6 +15,15 @@ export default {
         { title: "nombre de pièces", value: "57" },
         { title: "pourcentage d'occupation", value: "80%" },
       ],
+
+      tables: {
+        titles: ["Nom de l'étage", "% d'occupation"],
+        rows: [
+          ["Rez-de-chaussée", "80%"],
+          ["1er étage", "70%"],
+          ["2ème étage", "60%"],
+        ],
+      },
     };
   },
 };
@@ -47,8 +57,14 @@ export default {
         >
           <i class="fa-solid fa-magnifying-glass text-white"></i>
         </button>
-        <!-- SEARCH BAR -->
       </div>
+      <!-- SEARCH BAR -->
+      <!--  TABLE LIST -->
+      <div class="w-full min-h-28 bg-slate-100 mt-10 shadow rounded-xl p-2">
+        <table-list :titles="tables.titles" :rows="tables.rows"></table-list>
+      </div>
+
+      <!-- TABLE LIST-->
     </main>
   </div>
 </template>
