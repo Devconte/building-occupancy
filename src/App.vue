@@ -22,16 +22,32 @@ export default {
   <div id="app">
     <header class="h-16 w-full"></header>
     <main class="container mx-auto">
-      <h1 class="text-[#ffac49] text-center mb-6 text-3xl font-bold">
+      <h1 class="text-[#ffac49] text-center text-3xl font-bold">
         [NOM DU BATIMENT]
       </h1>
-      <div class="flex justify-evenly">
+      <!-- STATISTIQUE BATIMENT -->
+      <div class="flex justify-evenly my-10">
         <stat-card
           :key="index"
           v-for="(card, index) in statCards"
           :title="card.title"
           :value="card.value"
         ></stat-card>
+      </div>
+      <!-- STATISTIQUE BATIMENT -->
+      <!-- SEARCH BAR -->
+      <div class="flex">
+        <input
+          type="search"
+          class="w-full h-10 rounded-l-lg shadow px-4 outline-none hover:bg-gray-100"
+          placeholder="Rechercher un étage ou une pièce"
+        />
+        <button
+          class="bg-amber-500 hover:bg-amber-400 shadow active:bg-amber-300 w-14 h-10 flex justify-center items-center rounded-r-lg"
+        >
+          <i class="fa-solid fa-magnifying-glass text-white"></i>
+        </button>
+        <!-- SEARCH BAR -->
       </div>
     </main>
   </div>
