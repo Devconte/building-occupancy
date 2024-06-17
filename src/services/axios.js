@@ -1,6 +1,6 @@
-const axios = require("axios");
+import axios from "axios";
 
-async function fetchBuildings() {
+export async function fetchBuildings() {
   try {
     const response = await axios.get(
       "https://api-developers.spinalcom.com/api/v1/geographicContext/space"
@@ -10,9 +10,8 @@ async function fetchBuildings() {
     console.error(error);
   }
 }
-fetchBuildings();
 
-async function fetchRoomByDynamicId(id) {
+export async function fetchRoomByDynamicId(id) {
   try {
     const response = await axios.get(
       `https://api-developers.spinalcom.com/api/v1/room/${id}/control_endpoint_list`
@@ -22,5 +21,3 @@ async function fetchRoomByDynamicId(id) {
     console.error(error);
   }
 }
-
-// fetchRoomByDynamicId();
