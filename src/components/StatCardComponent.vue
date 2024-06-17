@@ -1,11 +1,11 @@
 <template>
   <div
-    class="h-52 w-52 bg-gray-200 rounded-xl shadow-sm flex items-center justify-center flex-col py-4"
+    class="h-52 w-52 bg-amber-500 rounded-xl shadow-sm flex items-center justify-center flex-col py-4"
   >
-    <div class="font-semibold text-sm text-amber-600">{{ title }}</div>
+    <div class="font-bold italic text-medium text-slate-800">{{ title }}</div>
 
     <div
-      class="flex-1 flex justify-center items-center text-8xl slashed-zero tabular-nums"
+      class="flex-1 flex text-neutral-900 justify-center items-center text-8xl slashed-zero tabular-nums"
     >
       {{ value }}
     </div>
