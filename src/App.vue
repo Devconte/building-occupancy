@@ -1,9 +1,13 @@
 <script>
+import { fetchBuildings } from "./services/axios";
 export default {
   name: "App",
   components: {
     StatCard: () => import("./components/StatCardComponent.vue"),
     TableList: () => import("./components/TableListComponent.vue"),
+  },
+  async mounted() {
+    await fetchBuildings();
   },
   data() {
     return {
@@ -24,7 +28,16 @@ export default {
           ["2ème étage", "60%"],
         ],
       },
+
+      searchedData: null,
     };
+  },
+  methods: {
+    search: function (event) {
+      this.searchedData = this.tables.rows.filter((row) => {
+        return row[0].toLowerCase().includes(event.target.value.toLowerCase());
+      });
+    },
   },
 };
 </script>
@@ -49,6 +62,7 @@ export default {
       <div class="flex">
         <input
           type="search"
+          @keyup="search($event)"
           class="w-full h-10 rounded-l-lg shadow px-4 outline-none hover:bg-gray-100"
           placeholder="Rechercher un étage ou une pièce"
         />
@@ -60,9 +74,11 @@ export default {
       </div>
       <!-- SEARCH BAR -->
       <!--  TABLE LIST -->
-      <div class="w-full min-h-28 bg-slate-100 mt-10 shadow rounded-xl p-2">
-        <table-list :titles="tables.titles" :rows="tables.rows"></table-list>
-      </div>
+      <table-list
+        class="mt-10 w-full bg-slate-50 rounded-lg shadow py-4"
+        :titles="tables.titles"
+        :rows="searchedData ?? tables.rows"
+      ></table-list>
 
       <!-- TABLE LIST-->
     </main>
