@@ -39,11 +39,12 @@ export default {
   },
   methods: {
     search: function (event) {
-      this.searchedData = this.floors?.filter((floor) => {
-        return floor?.name
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase());
+      const result = this.floors?.filter((floor) => {
+        return floor?.name.toLowerCase().includes(event.toLowerCase())
+          ? [floor.name]
+          : null;
       });
+      this.searchedData = result.map((floor) => [floor.name]);
     },
   },
 };
